@@ -10,6 +10,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.app.ActionBar;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
@@ -26,18 +27,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Main2Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int SELECT_PHOTO = 100;
-    private ImageView chooseImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        ActivityCompat.requestPermissions(Main2Activity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
         startEmergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent emergencyIntent = new Intent(MainActivity.this, EmergencyActActivity.class);
+                Intent emergencyIntent = new Intent(Main2Activity.this, EmergencyActActivity.class);
 
                 startActivity(emergencyIntent);
             }
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent healthIntent = new Intent(MainActivity.this, HealthActivity.class);
+                Intent healthIntent = new Intent(Main2Activity.this, HealthActivity.class);
 
                 startActivity(healthIntent);
             }
@@ -87,22 +87,21 @@ public class MainActivity extends AppCompatActivity
         myAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent accountIntent = new Intent(MainActivity.this, AccountActivity.class);
+                Intent accountIntent = new Intent(Main2Activity.this, AccountActivity.class);
                 startActivity(accountIntent);
             }
         });
     }
-    public void ChooseImage(View v){
+
+    public void ChooseImage(View v) {
         openGallery();
     }
 
-    private void openGallery(){
+    private void openGallery() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, SELECT_PHOTO);
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -122,7 +121,6 @@ public class MainActivity extends AppCompatActivity
 
             ImageView imageView = (ImageView) findViewById(R.id.imageButton);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
         }
     }
 
@@ -134,7 +132,7 @@ public class MainActivity extends AppCompatActivity
                 EditText edit = ((EditText) v);
                 Rect outR = new Rect();
                 edit.getGlobalVisibleRect(outR);
-                Boolean isKeyboardOpen = !outR.contains((int)ev.getRawX(), (int)ev.getRawY());
+                Boolean isKeyboardOpen = !outR.contains((int) ev.getRawX(), (int) ev.getRawY());
                 System.out.print("Is Keyboard? " + isKeyboardOpen);
                 if (isKeyboardOpen) {
                     System.out.print("Entro al IF");
@@ -142,15 +140,11 @@ public class MainActivity extends AppCompatActivity
                     InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
                 }
-
                 edit.setCursorVisible(!isKeyboardOpen);
-
             }
         }
         return super.dispatchTouchEvent(ev);
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -168,12 +162,12 @@ public class MainActivity extends AppCompatActivity
                 // Create a Uri from an intent string. Use the result to create an Intent.
                 Uri gmmIntentUri = Uri.parse("geo:0,0?q=hospitals");
 
-// Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+                // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-// Make the Intent explicit by setting the Google Maps package
+                // Make the Intent explicit by setting the Google Maps package
                 mapIntent.setPackage("com.google.android.apps.maps");
 
-// Attempt to start an activity that can handle the Intent
+                // Attempt to start an activity that can handle the Intent
                 startActivity(mapIntent);
 
                 return true;
@@ -181,8 +175,6 @@ public class MainActivity extends AppCompatActivity
         });
 
         return true;
-
-
     }
 
     @Override
@@ -195,8 +187,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -204,18 +194,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent intent =new Intent(MainActivity.this,StepsActivity.class);
+            Intent intent = new Intent(Main2Activity.this, StepsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
-
         } else if (id == R.id.nav_slideshow) {
-
         } else if (id == R.id.nav_manage) {
-
         } else if (id == R.id.nav_share) {
-
         } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

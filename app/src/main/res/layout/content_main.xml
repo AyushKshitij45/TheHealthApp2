@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_weight="10"
     android:orientation="vertical"
-    tools:context="com.example.admin.thehealthapp..MainActivity"
+    tools:context="com.example.admin.thehealthapp.Main2Activity"
     >
 
 
