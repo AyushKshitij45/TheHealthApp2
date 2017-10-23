@@ -75,13 +75,6 @@ public class LoginActivity extends AppCompatActivity {
         onLogin(LoginType.PHONE);
     }
 
-    public void onEmailLogin(View view) {
-        AppEventsLogger logger = AppEventsLogger.newLogger(this);
-        logger.logEvent("onEmailLogin");
-
-        onLogin(LoginType.EMAIL);
-    }
-
     private void launchAccountActivity() {
         Intent intent = new Intent(LoginActivity.this, Main2Activity.class);
         startActivity(intent);

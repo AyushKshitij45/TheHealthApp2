@@ -48,11 +48,6 @@ public class AccountActivity extends AppCompatActivity {
                     String formattedPhoneNumber = formatPhoneNumber(phoneNumber.toString());
                     info.setText(formattedPhoneNumber);
                     infoLabel.setText(R.string.phone_label);
-                } else {
-                    // if the email address is available, display it
-                    String emailString = account.getEmail();
-                    info.setText(emailString);
-                    infoLabel.setText(R.string.email_label);
                 }
 
             }

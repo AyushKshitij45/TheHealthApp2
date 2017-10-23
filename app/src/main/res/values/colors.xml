@@ -11,11 +11,11 @@
 
     <color name="ak_background">#d5f0ec</color>
     <color name="ak_text">#61727f</color>
-    <color name="ak_buttonBackground">#09d4b6</color>
-    <color name="ak_buttonPressedBackground">#00c5a5</color>
+    <color name="ak_buttonBackground">#3F51B5</color>
+    <color name="ak_buttonPressedBackground">#4D8CD5</color>
     <color name="ak_buttonText">#ffffff</color>
     <color name="ak_inputBackground">#ffffff</color>
     <color name="ak_inputText">#7d97ad</color>
-    <color name="ak_statusBar">#00c5a5</color>
-    <color name="ak_icon">#09d4b6</color>
+    <color name="ak_statusBar">#303F9F</color>
+    <color name="ak_icon">#4D8CD5</color>
 </resources>
