@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.admin.thehealthapp.SignUpActivity">
+
+    <TextView
+        android:id="@+id/nameHead"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:paddingTop="16dp"
+        android:textColor="@color/accountLabel"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        tools:layout_editor_absoluteX="12dp"
+        android:layout_marginBottom="0dp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="8dp"
+        android:hint="Name"
+        app:layout_constraintBottom_toTopOf="@+id/mailHead"/>
+
+    <Button
+        android:id="@+id/next"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/login_button_selector"
+        android:text="Next"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <TextView
+        android:id="@+id/mailHead"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:text="Email-ID"
+        android:paddingTop="16dp"
+        android:textColor="@color/accountLabel"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        tools:layout_editor_absoluteX="12dp"
+        android:layout_marginBottom="-12dp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:hint="Email-ID"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bloodHead" />
+
+    <TextView
+        android:id="@+id/bloodHead"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Blood Group"
+        android:paddingTop="16dp"
+        android:textColor="@color/accountLabel"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner1"
+        app:layout_constraintBottom_toBottomOf="@id/email"/>
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/bloodHead"
+        tools:layout_editor_absoluteX="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"/>
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:paddingTop="16dp"
+        android:textColor="@color/accountLabel"
+        android:textSize="18dp"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner2"
+        app:layout_constraintBottom_toBottomOf="@id/spinner1"/>
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="12dp"
+        />
+
+
+</android.support.constraint.ConstraintLayout>

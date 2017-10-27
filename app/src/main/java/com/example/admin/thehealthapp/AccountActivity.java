@@ -24,6 +24,9 @@ public class AccountActivity extends AppCompatActivity {
     TextView id;
     TextView infoLabel;
     TextView info;
+    TextView nameText;
+    TextView bloodGroup;
+    TextView sex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,26 +34,37 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
         FontHelper.setCustomTypeface(findViewById(R.id.view_root));
 
+
         id = (TextView) findViewById(R.id.id);
         infoLabel = (TextView) findViewById(R.id.info_label);
         info = (TextView) findViewById(R.id.info);
+bloodGroup=(TextView)findViewById(R.id.bloodText);
+nameText=(TextView)findViewById(R.id.NameText);
+        sex=(TextView)findViewById(R.id.sex);
+
+
 
         AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
             @Override
             public void onSuccess(final Account account) {
                 // Get Account Kit ID
-                String accountKitId = account.getId();
-                id.setText(accountKitId);
 
+                id.setText(getIntent().getStringExtra("email"));
+                nameText.setText(getIntent().getStringExtra("name"));
+                bloodGroup.setText(getIntent().getStringExtra("blood"));
+                sex.setText(getIntent().getStringExtra("sex"));
                 PhoneNumber phoneNumber = account.getPhoneNumber();
                 if (account.getPhoneNumber() != null) {
                     // if the phone number is available, display it
                     String formattedPhoneNumber = formatPhoneNumber(phoneNumber.toString());
                     info.setText(formattedPhoneNumber);
                     infoLabel.setText(R.string.phone_label);
+
+
                 }
 
             }
+
 
             @Override
             public void onError(final AccountKitError error) {

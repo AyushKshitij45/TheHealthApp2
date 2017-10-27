@@ -27,6 +27,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.example.admin.thehealthapp.R.id.username;
+import static com.example.admin.thehealthapp.R.string.account;
+
 public class Main2Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int SELECT_PHOTO = 100;
 
@@ -88,6 +91,10 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View view) {
                 Intent accountIntent = new Intent(Main2Activity.this, AccountActivity.class);
+                accountIntent.putExtra("name",getIntent().getStringExtra("name"));
+                accountIntent.putExtra("email",getIntent().getStringExtra("email"));
+                accountIntent.putExtra("blood",getIntent().getStringExtra("blood"));
+                accountIntent.putExtra("sex",getIntent().getStringExtra("sex"));
                 startActivity(accountIntent);
             }
         });

@@ -1,6 +1,7 @@
 package com.example.admin.thehealthapp;
 
 import android.content.Intent;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -76,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void launchAccountActivity() {
-        Intent intent = new Intent(LoginActivity.this, Main2Activity.class);
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(intent);
 
     }
