@@ -14,6 +14,8 @@ import android.widget.TextView;
 public class EmargencyResponseActivity extends AppCompatActivity {
     CountDownTimer timer;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

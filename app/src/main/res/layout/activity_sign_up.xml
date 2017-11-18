@@ -15,8 +15,7 @@
         android:textColor="@color/accountLabel"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/username"
-        tools:layout_editor_absoluteX="12dp"
-        android:layout_marginBottom="0dp" />
+        tools:layout_editor_absoluteX="12dp" />
 
     <EditText
         android:id="@+id/username"
@@ -50,8 +49,7 @@
         android:textColor="@color/accountLabel"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/email"
-        tools:layout_editor_absoluteX="12dp"
-        android:layout_marginBottom="-12dp" />
+        tools:layout_editor_absoluteX="12dp" />
 
     <EditText
         android:id="@+id/email"
@@ -72,17 +70,14 @@
         android:textColor="@color/accountLabel"
         android:textSize="18dp"
         tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner1"
-        app:layout_constraintBottom_toBottomOf="@id/email"/>
+        app:layout_constraintBottom_toBottomOf="@+id/email"/>
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/bloodHead"
-        tools:layout_editor_absoluteX="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"/>
+        tools:layout_editor_absoluteX="12dp" />
 
 
 
@@ -95,9 +90,7 @@
         android:textColor="@color/accountLabel"
         android:textSize="18dp"
         tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner2"
-        app:layout_constraintBottom_toBottomOf="@id/spinner1"/>
+        app:layout_constraintBottom_toBottomOf="@+id/spinner1"/>
     <Spinner
         android:id="@+id/spinner2"
         android:layout_width="0dp"
@@ -106,6 +99,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         tools:layout_editor_absoluteX="12dp"
         />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:text="Select a Contact"
+        android:onClick="onClickSelectContact"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp" />
 
 
 </android.support.constraint.ConstraintLayout>

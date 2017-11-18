@@ -15,4 +15,11 @@
     <string name="phone_label">Phone Number</string>
 
     <string name="logout_label">Log Out</string>
+
+
+
+    <string name="turn_on_GPS">Turn on GPS</string>
+    <string name="permission_denied">GPS permission denied</string>
+
+
 </resources>
