@@ -1,10 +1,13 @@
 package com.example.admin.thehealthapp;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,15 +18,14 @@ import android.widget.Spinner;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    private static final String TAG = SignUpActivity.class.getSimpleName();
+    private static final int REQUEST_CODE_PICK_CONTACTS = 4;
+    public String contactID;     // contacts unique ID
     EditText username;
     EditText email;
 Spinner dropdown;
     Spinner sex;
-    private static final String TAG = SignUpActivity.class.getSimpleName();
-    private static final int REQUEST_CODE_PICK_CONTACTS = 4;
     private Uri uriContact;
-    public String contactID;     // contacts unique ID
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,11 @@ Spinner dropdown;
 
 
         public void onClickSelectContact(View btnSelectContact) {
-
+            if (ActivityCompat.checkSelfPermission(SignUpActivity.this,
+                    Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(SignUpActivity.this, new String[]{Manifest.permission.READ_CONTACTS}, 1);
+                return;
+            }
             // using native contacts selection
             // Intent.ACTION_PICK = Pick an item from the data, returning what was selected.
             startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), REQUEST_CODE_PICK_CONTACTS);
@@ -148,7 +154,7 @@ Spinner dropdown;
                     intent.putExtra("email", email.getText().toString());
                     intent.putExtra("blood", dropdown.getSelectedItem().toString());
                     intent.putExtra("sex", sex.getSelectedItem().toString());
-
+                    intent.putExtra("number", contactID);
 
                     startActivity(intent);
                 }

@@ -38,4 +38,5 @@ dependencies {
     compile 'com.facebook.android:account-kit-sdk:4.+'
     compile 'com.google.android.gms:play-services-location:11.0.1'
     testCompile 'junit:junit:4.12'
+
 }

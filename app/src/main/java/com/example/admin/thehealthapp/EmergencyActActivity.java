@@ -27,11 +27,10 @@ import java.util.ArrayList;
 
 public class EmergencyActActivity extends AppCompatActivity implements LocationListener {
 
-    final String TAG = "GPS";
     private final static int ALL_PERMISSIONS_RESULT = 101;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
-
+    final String TAG = "GPS";
     LocationManager locationManager;
     Location loc;
     ArrayList<String> permissions = new ArrayList<>();
@@ -45,6 +44,30 @@ public class EmergencyActActivity extends AppCompatActivity implements LocationL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergengyact);
+
+
+        FrameLayout stranger = (FrameLayout) (findViewById(R.id.stranger));
+        stranger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(EmergencyActActivity.this, EmargencyResponseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        FrameLayout self = (FrameLayout) (findViewById(R.id.self));
+
+        self.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                sendSMSMessage();
+
+
+            }
+        });
+
 
         locationManager = (LocationManager) getSystemService(Service.LOCATION_SERVICE);
         isGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -74,26 +97,6 @@ public class EmergencyActActivity extends AppCompatActivity implements LocationL
             getLocation();
         }
 
-        stranger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(EmergencyActActivity.this, EmargencyResponseActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        FrameLayout self = (FrameLayout) (findViewById(R.id.self));
-
-        self.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                sendSMSMessage();
-
-
-            }
-        });
 
     }
 
@@ -278,7 +281,7 @@ public class EmergencyActActivity extends AppCompatActivity implements LocationL
     }
 
 
-    FrameLayout stranger = (FrameLayout) (findViewById(R.id.stranger));
+
 
 
 
@@ -288,7 +291,7 @@ public class EmergencyActActivity extends AppCompatActivity implements LocationL
         Intent intent= new Intent(EmergencyActActivity.this,EmargencyResponseActivity.class);
 
 
-        String phone = "9807289769";
+        String phone = getIntent().getStringExtra("number");
         Uri uri=Uri.parse("Hey, I am in trouble at http://maps.google.com/?q="+Double.toString(loc.getLatitude())+","+Double.toString(loc.getLongitude()));
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phone, null, uri.toString(), null, null);

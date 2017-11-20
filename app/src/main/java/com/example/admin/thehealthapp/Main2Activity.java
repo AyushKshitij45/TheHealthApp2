@@ -30,6 +30,7 @@ import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int SELECT_PHOTO = 100;
+    long last_click = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +94,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
                 accountIntent.putExtra("email",getIntent().getStringExtra("email"));
                 accountIntent.putExtra("blood",getIntent().getStringExtra("blood"));
                 accountIntent.putExtra("sex",getIntent().getStringExtra("sex"));
+                accountIntent.putExtra("number", getIntent().getStringExtra("number"));
                 startActivity(accountIntent);
             }
         });
@@ -214,8 +216,6 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
 
     }
-
-    long last_click = 0;
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
